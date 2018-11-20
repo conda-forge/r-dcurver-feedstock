@@ -25,11 +25,12 @@ requirements:
   build:
     - {{ compiler('c') }}        # [not win]
     - {{ compiler('cxx') }}      # [not win]
-    - {{native}}toolchain        # [win]
+    - m2w64-toolchain            # [win]
     - {{posix}}filesystem        # [win]
     - {{posix}}make
-    - {{posix}}sed  # [win]
-    - {{posix}}coreutils  # [win]
+    - {{posix}}sed               # [win]
+    - {{posix}}coreutils         # [win]
+    - llvm-openmp                # [osx]
   host:
     - r-base
     - r-rcpp >=0.12.14
@@ -37,6 +38,7 @@ requirements:
   run:
     - r-base
     - {{native}}gcc-libs         # [win]
+    - llvm-openmp                # [osx]
     - r-rcpp >=0.12.14
     - r-rcpparmadillo
 
