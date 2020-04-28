@@ -15,29 +15,28 @@ source:
 
 build:
   merge_build_host: True  # [win]
-  number: 1001
-  skip: true  # [win32]
+  number: 1002
   rpaths:
     - lib/R/lib/
     - lib/
 
 requirements:
   build:
-    - {{ compiler('c') }}        # [not win]
-    - {{ compiler('cxx') }}      # [not win]
-    - m2w64-toolchain            # [win]
-    - {{posix}}filesystem        # [win]
-    - {{posix}}make
-    - {{posix}}sed               # [win]
-    - {{posix}}coreutils         # [win]
-    - llvm-openmp                # [osx]
+    - {{ compiler('c') }}          # [not win]
+    - {{ compiler('cxx') }}        # [not win]
+    - {{ compiler('m2w64_c') }}    # [win]
+    - {{ compiler('m2w64_cxx') }}  # [win]
+    - {{ posix }}filesystem        # [win]
+    - {{ posix }}make
+    - {{ posix }}sed               # [win]
+    - {{ posix }}coreutils         # [win]
+    - llvm-openmp                  # [osx]
   host:
     - r-base
     - r-rcpp >=0.12.14
     - r-rcpparmadillo
   run:
     - r-base
-    - {{native}}gcc-libs         # [win]
     - llvm-openmp                # [osx]
     - r-rcpp >=0.12.14
     - r-rcpparmadillo
