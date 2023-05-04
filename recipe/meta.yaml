@@ -31,6 +31,7 @@ requirements:
     - {{ posix }}make
     - {{ posix }}sed               # [win]
     - {{ posix }}coreutils         # [win]
+    - {{ posix }}zip               # [win]
     - libgomp                      # [linux]
     - llvm-openmp                  # [osx]
   host:
@@ -41,6 +42,7 @@ requirements:
     - liblapack
   run:
     - r-base
+    - {{ native }}gcc-libs         # [win]
     - r-rcpp >=0.12.14
     - r-rcpparmadillo
 
