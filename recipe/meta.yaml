@@ -14,10 +14,12 @@ source:
 
 build:
   merge_build_host: true  # [win]
-  number: 1
+  number: 2
   rpaths:
     - lib/R/lib/
     - lib/
+  missing_dso_whitelist:
+    - '*/R.dll'           # [win]
 
 requirements:
   build:
@@ -29,14 +31,18 @@ requirements:
     - {{ posix }}make
     - {{ posix }}sed               # [win]
     - {{ posix }}coreutils         # [win]
+    - {{ posix }}zip               # [win]
+    - libgomp                      # [linux]
     - llvm-openmp                  # [osx]
   host:
     - r-base
     - r-rcpp >=0.12.14
     - r-rcpparmadillo
+    - libblas
+    - liblapack
   run:
     - r-base
-    - llvm-openmp                # [osx]
+    - {{ native }}gcc-libs         # [win]
     - r-rcpp >=0.12.14
     - r-rcpparmadillo
 
