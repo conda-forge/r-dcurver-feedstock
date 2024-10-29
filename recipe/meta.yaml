@@ -1,6 +1,5 @@
 {% set version = "0.9.2" %}
 {% set posix = 'm2-' if win else '' %}
-{% set native = 'm2w64-' if win else '' %}
 
 package:
   name: r-dcurver
@@ -13,8 +12,7 @@ source:
   sha256: cc6c55090d3607910515981ea0c7221e40e7a29e0da0c5a5f42c3847012290ec
 
 build:
-  merge_build_host: true  # [win]
-  number: 3
+  number: 4
   rpaths:
     - lib/R/lib/
     - lib/
@@ -27,8 +25,10 @@ requirements:
     - r-rcpp                     # [build_platform != target_platform]
     - r-rcpparmadillo            # [build_platform != target_platform]
     - {{ compiler('c') }}          # [not win]
+    - {{ stdlib("c") }}            # [not win]
     - {{ compiler('cxx') }}        # [not win]
     - {{ compiler('m2w64_c') }}    # [win]
+    - {{ stdlib("m2w64_c") }}      # [win]
     - {{ compiler('m2w64_cxx') }}  # [win]
     - {{ posix }}filesystem        # [win]
     - {{ posix }}make
@@ -45,7 +45,6 @@ requirements:
     - liblapack
   run:
     - r-base
-    - {{ native }}gcc-libs         # [win]
     - r-rcpp >=0.12.14
     - r-rcpparmadillo
 
