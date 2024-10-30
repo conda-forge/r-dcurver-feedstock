@@ -12,7 +12,7 @@ source:
   sha256: cc6c55090d3607910515981ea0c7221e40e7a29e0da0c5a5f42c3847012290ec
 
 build:
-  number: 4
+  number: 5
   rpaths:
     - lib/R/lib/
     - lib/
@@ -43,6 +43,7 @@ requirements:
     - r-rcpparmadillo
     - libblas
     - liblapack
+    - llvm-openmp                  # [osx]
   run:
     - r-base
     - r-rcpp >=0.12.14
